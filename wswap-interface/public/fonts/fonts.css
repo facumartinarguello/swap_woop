@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'NeutraDisp-Bold';
+    src: url('NeutraDisp-Bold.eot');
+    src: url('NeutraDisp-Bold.eot?#iefix') format('embedded-opentype'),
+        url('NeutraDisp-Bold.woff2') format('woff2'),
+        url('NeutraDisp-Bold.woff') format('woff'),
+        url('NeutraDisp-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NeutraDisp-Titling';
+    src: url('NeutraDisp-Titling.eot');
+    src: url('NeutraDisp-Titling.eot?#iefix') format('embedded-opentype'),
+        url('NeutraDisp-Titling.woff2') format('woff2'),
+        url('NeutraDisp-Titling.woff') format('woff'),
+        url('NeutraDisp-Titling.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NeutraText-Demi';
+    src: url('NeutraText-Demi.eot');
+    src: url('NeutraText-Demi.eot?#iefix') format('embedded-opentype'),
+        url('NeutraText-Demi.woff2') format('woff2'),
+        url('NeutraText-Demi.woff') format('woff'),
+        url('NeutraText-Demi.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NeutraText-Book';
+    src: url('NeutraText-Book.eot');
+    src: url('NeutraText-Book.eot?#iefix') format('embedded-opentype'),
+        url('NeutraText-Book.woff2') format('woff2'),
+        url('NeutraText-Book.woff') format('woff'),
+        url('NeutraText-Book.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+

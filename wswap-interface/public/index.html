@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <!-- Links -->
+    <link rel="shortcut icon" type="image/png" href="%PUBLIC_URL%/favicon.png?v=2"/>
+    <link rel="apple-touch-icon" sizes="195x195" href="%PUBLIC_URL%/images/195x195_App_Icon.png"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="static/fonts/fonts.css">
+    <link rel="stylesheet" href="static/css/appv4.css?v=4">
+    <!-- Meta -->
+    <title>Wault Swap</title>
+    <meta
+            name="description"
+            content="WaultSwap - A DeFi exchange on Binance Smart Chan (BSC)"
+    />
+    <meta name="theme-color" content="#000000"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no"/>
+    <meta name="twitter:image" content="%PUBLIC_URL%/favicon.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="WaultSwap - A DeFi exchange on Binance Smart Chan (BSC)"/>
+</head>
+<body class="dark-theme">
+<noscript>You need to enable JavaScript to run this app.</noscript>
+
+
+<div class="wrapper">
+    <div class="page-top-line"></div>
+
+    <nav id="sidebar" class="">
+        <div class="sidebar-header">
+            <div class="main-logo"></div>
+        </div>
+        <ul class="list-unstyled" style="padding-left: 3px;">
+            <li><a href="https://app.wault.finance/#overview" class="lnk overview active"><span>Overview</span></a></li>
+            <li><a href="https://swap.wault.finance" class="lnk swap"><span>Swap</span></a></li>
+            <li><a href="https://app.wault.finance/#farm" class="lnk farm"><span>Farm</span></a></li>
+            <li><a href="https://app.wault.finance/#locked-staking" class="lnk locked-staking"><span>Locked Staking</span></a></li>
+            <li><a href="https://app.wault.finance/#vaults" class="lnk vaults"><span>Vaults</span></a></li>
+            <li><a href="https://locker.wault.finance/" target="_blank" class="lnk locked"><span>Locker</span></a></li>
+            <li><a href="https://launchpad.wault.finance/" target="_blank" class="lnk launchpad"><span>Launchpad</span></a></li>
+            <li><a href="https://docs.wault.finance" target="_blank" class="lnk docs"><span>Docs</span></a></li>
+            <li><a href="https://docs.wault.finance/resources/transparency" target="_blank" class="lnk contacts"><span>Contracts</span></a>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="calculator-container">
+                <div class="input-group">
+                    <a class="text" style="color: #2b7a78;"
+                       href="https://v1exchange.pancakeswap.finance/#/swap?outputCurrency=0x6Ff2d9e5891a7a7c554b80e0D1B791483C78BcE9"
+                       target="_blank">WAULT</a>
+                    <a class="input"
+                       href="https://v1exchange.pancakeswap.finance/#/swap?outputCurrency=0x6Ff2d9e5891a7a7c554b80e0D1B791483C78BcE9"
+                       target="_blank"
+                       id="calcWaultPrice">$<span id="waultPrice">0.00</span></a>
+                </div>
+                <div class="input-group">
+                    <a class="text" style="color: #2b7a78;"
+                       href="https://v1exchange.pancakeswap.finance/#/swap?outputCurrency=0x6Ff2d9e5891a7a7c554b80e0D1B791483C78BcE9"
+                       target="_blank">WAULT LP</a>
+                    <a class="input"
+                       href="https://v1exchange.pancakeswap.finance/#/swap?outputCurrency=0x6Ff2d9e5891a7a7c554b80e0D1B791483C78BcE9"
+                       target="_blank" id="calcWaultLpPrice">$<span id="waultLpPrice">0.00</span></a>
+                </div>
+                <div class="input-group">
+                    <span class="text" style="color: #2b7a78;">WEX</span>
+                    <div class="input" id="calcWexPrice">$<span id="wexPrice">0.00</span></div>
+                </div>
+                <div class="input-group">
+                    <span class="text" style="color: #2b7a78;">WEX LP</span>
+                    <div class="input" id="calcWexLpPrice">$<span id="wexLpPrice">0.00</span></div>
+                </div>
+
+                <div class="input-group">
+                    <a class="text" style="color: #2b7a78;"
+                       href="https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xB64E638E60D154B43f660a6BF8fD8a3b249a6a21">WAULT<span
+                            class="bigger-letter">x</span></a>
+                    <div class="input" id="calcWAULTXPrice"
+                         href="https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xB64E638E60D154B43f660a6BF8fD8a3b249a6a21">
+                        $<span id="waultxPrice">0.00</span></div>
+                </div>
+
+                <div class="input-group">
+                    <a class="text" style="color: #2b7a78;"
+                       href="https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xB64E638E60D154B43f660a6BF8fD8a3b249a6a21">WAULT<span
+                            class="bigger-letter">x</span> LP</a>
+                    <div class="input" id="calcWAULTX_LPPrice"
+                         href="https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xB64E638E60D154B43f660a6BF8fD8a3b249a6a21">
+                        $<span id="waultxLpPrice">0.00</span></div>
+                </div>
+            </div>
+
+<!--            <div class="action d-flex justify-content-between">-->
+<!--                <div class="switch-themes" id="themes">-->
+<!--                    <a href="#" id="lightTheme" onclick="return false;"-->
+<!--                       :class="['light',{ 'active' : $cookies.get('theme_color') == 'light' }]" data-type="light"></a>-->
+<!--                    <a href="#" id="darkTheme" onclick="return false;"-->
+<!--                       :class="['dark',{ 'active' : $cookies.get('theme_color') == 'dark' }]" data-type="dark"></a>-->
+<!--                </div>-->
+<!--                <div class="langs text-right">-->
+<!--                    <a href="#" onclick="return false;" class="active">EN</a>-->
+<!--                    <a href="#" onclick="return false;" class="">ES</a>-->
+<!--                </div>-->
+<!--            </div>-->
+
+            <div class="social">
+                <a href="https://discord.gg/cVtJ9RZXwH" target="_blank" class="slink discord"></a>
+                <a href="https://github.com/WaultFinance" target="_blank" class="slink github"></a>
+                <a href="https://t.me/WaultFinance" target="_blank" class="slink telegram"></a>
+                <a href="https://www.youtube.com/channel/UCkZzIXsEl9nDmxMeEmLNx-A" target="_blank"
+                   class="slink youtube"></a>
+                <a href="https://waultfinance.medium.com/" target="_blank" class="slink medium"></a>
+                <a href="https://twitter.com/Wault_Finance" target="_blank" class="slink twitter"></a>
+            </div>
+        </div>
+    </nav>
+
+    <a type="button" id="sidebarCollapse" class="btn-mobile-menu">
+        <span class="mdi mdi-menu"></span>
+    </a>
+
+    <div id="page-wrapper-overlay">
+    </div>
+    <div id="page-wrapper">
+        <!-- /connect-wallet -->
+        <!--        <div class="inner-navigation" v-if="selectedSection != 1">-->
+        <!--          <div class="container-fluid">-->
+        <!--            <button type="button" class="btn btn-default float-right" id="connectWallet" @click="walletButtonClick">{{ walletButton.text }}</button>-->
+        <!--          </div>-->
+        <!--        </div>-->
+
+        <div id="root"></div>
+    </div>
+</div>
+
+<script src="static/js/vendors.js"></script>
+<script src="static/js/app.js"></script>
+<script>
+    let scr4 = document.createElement("script");
+    scr4.src = "https://api.wault.finance/realtimeData.js" + "?ts=" + new Date().getTime();
+    document.getElementsByTagName("body")[0].appendChild(scr4);
+</script>
+<script>
+    (async() => {
+        while(!window.hasOwnProperty("realtimeData"))
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            document.getElementById('waultPrice').innerHTML = realtimeData.waultPrice;
+            document.getElementById('waultLpPrice').innerHTML = realtimeData.waultLpPrice;
+            document.getElementById('wexPrice').innerHTML = realtimeData.waultxPrice;
+            document.getElementById('wexLpPrice').innerHTML = realtimeData.waultxLpPrice;
+            document.getElementById('waultxPrice').innerHTML = realtimeData.waultxPrice;
+            document.getElementById('waultxLpPrice').innerHTML = realtimeData.waultxLpPrice;
+    })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "short_name": "WSwap",
+  "name": "WaultSwap",
+  "icons": [
+    {
+      "src": "./images/195x195_App_Icon.png",
+      "sizes": "195x195",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "orientation": "portrait",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

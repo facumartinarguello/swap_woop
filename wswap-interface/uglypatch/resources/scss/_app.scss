@@ -1,0 +1,666 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  //font-family: $font-book;
+  font-size: 14px;
+  font-weight: 400;
+  color: #231F20;
+  text-align: left;
+  //background-color:#fff;
+  overflow-x: hidden;
+
+  &.dark-theme
+  {
+    background-color: #142429;
+  }
+
+}
+
+[type="button"], [type="reset"], [type="submit"], button {
+  -webkit-appearance: none!important;
+  //border-radius: 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+.page-top-line {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 52px;
+  background: black;
+  background: linear-gradient(90deg, black 0%, black 35%, #42b4ad 100%);
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+
+a[data-toggle=collapse] {
+  position: relative;
+}
+
+#page-wrapper {
+  width: 100%;
+  padding: 0px;
+  padding-top:50px;
+  padding-left: 15px;
+  min-height: 100vh;
+  transition: all 0.3s;
+
+  .page-container {
+    max-width: 1454px;
+  }
+}
+
+.arrow {
+  position: relative;
+  height: 15px;
+  width: 15px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    width: 0.15rem;
+    height: 100%;
+    transition: all 0.5s;
+    left: -5px;
+    transform: rotate(-45deg);
+    background-color: #394a6d;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    width: 0.15rem;
+    height: 100%;
+    transition: all 0.5s;
+    left: 5px;
+    transform: rotate(45deg);
+    background-color: #394a6d;
+  }
+}
+
+.open {
+  .arrow {
+    &::before {
+      left: -5px;
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      left: 5px;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+
+#page-wrapper-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #00000090;
+  z-index: 98;
+  display: none;
+}
+
+#sidebar {
+  font-family: $font-book!important;
+  min-width: 250px;
+  max-width: 250px;
+  padding-left: 40px;
+  transition: all 0.3s;
+  overflow: hidden;
+  background-color: #000;
+
+  .sidebar-header {
+    padding: 0px;
+    margin-top: 70px;
+    margin-bottom: 40px;
+    text-align: center;
+
+    .main-logo {
+      background: transparent url("../../images/logo/fixed-wault-logo-black2.png") 0 0 no-repeat;
+      width: 170px;
+      height: 90px;
+      background-size: contain;
+    }
+
+    img {
+      width: 170px;
+    }
+  }
+
+  ul {
+    li {
+      margin-bottom: 10px;
+
+      a {
+        display: block;
+        color: #000;
+        font-size: 18px;
+        line-height: 18px;
+        letter-spacing: 0.5px;
+        padding-left: 20px !important;
+        position: relative;
+        transition: all 0.3s ease;
+
+        &:hover {
+          text-decoration: none;
+          color: #42b4ad!important;
+        }
+      }
+
+      a.active {
+        font-family: "NeutraText-Demi";
+        text-decoration: none;
+        color: #42b4ad !important;
+      }
+
+      a.lnk {
+        span {
+          position: relative;
+
+          &:before {
+            font-family: "Material Design Icons";
+            font-size: 17px;
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -25px;
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+
+      a.lnk.overview {
+        span {
+          &:before {
+            content: "\F2DC";
+          }
+        }
+      }
+
+      a.lnk.swap {
+        span {
+          &:before {
+            content: "\FBA9";
+          }
+        }
+      }
+
+      a.lnk.farm {
+        span {
+          &:before {
+            content: "\F891";
+          }
+        }
+      }
+
+      a.lnk.locked-staking {
+        span {
+          &:before {
+            content: "\FAA9";
+          }
+        }
+      }
+
+      a.lnk.vaults {
+        span {
+          &:before {
+            content: "\F02A7";
+          }
+        }
+      }
+
+      a.lnk.locked {
+        span {
+          &:before {
+            content: "\F97E";
+          }
+        }
+      }
+
+      a.lnk.launchpad {
+        span {
+          &:before {
+            content: "\F463";
+          }
+        }
+      }
+
+      a.lnk.docs {
+        span {
+          &:before {
+            content: "\FECB";
+          }
+        }
+      }
+
+      a.lnk.contacts {
+        span {
+          &:before {
+            content: "\F00A6";
+          }
+        }
+      }
+
+      ul {
+        a {
+          background: #8c68ce;
+        }
+      }
+    }
+
+    li.active {
+      > a {
+        color: #fff;
+        background: #643ab0;
+      }
+    }
+  }
+
+  a[aria-expanded=true] {
+    color: #fff;
+    background: #643ab0;
+  }
+
+  .sidebar-footer {
+    margin-top: 100px;
+    padding-bottom: 20px;
+    position: absolute;
+    bottom: 0;
+
+    .action {
+      margin-bottom: 5px;
+
+      .switch-themes {
+
+        &.nv
+        {
+          visibility: hidden;
+        }
+
+        a {
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: 15px;
+          display: inline-block;
+          width: 15px;
+          height: 15px;
+          opacity: 0.5;
+          transition: all 0.3s ease;
+
+          + {
+            a {
+              margin-left: 10px;
+            }
+          }
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+
+        a.active {
+          opacity: 1;
+        }
+
+        .light {
+          background-image: url("../../images/pictograms/sun.svg");
+        }
+
+        .dark {
+          background-image: url("../../images/pictograms/moon.svg");
+        }
+      }
+
+      .langs {
+        a {
+          text-transform: uppercase;
+          font-family: "NeutraDisp-Bold";
+          font-size: 14px;
+          color: #37afa8;
+          opacity: 0.5;
+          transition: all 0.3s ease;
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+
+        a.active {
+          opacity: 1;
+        }
+      }
+    }
+
+    .social {
+
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+
+      a {
+        //display: inline-block;
+        transition: all 0.3s ease;
+
+        &:hover {
+          opacity: 0.7;
+        }
+
+        //+ {
+        //  a {
+        //    margin-left: 0px;
+        //  }
+        //}
+      }
+
+      a.slink {
+        width: 30px;
+        height: 30px;
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-size: 17px;
+      }
+
+      a.slink.discord {
+        background-image: url("../../images/pictograms/discord.svg");
+      }
+
+      a.slink.github {
+        background-image: url("../../images/pictograms/github.svg");
+      }
+
+      a.slink.telegram {
+        background-image: url("../../images/pictograms/telegram.svg");
+      }
+
+      a.slink.youtube {
+        background-image: url("../../images/pictograms/youtube.svg");
+        background-position: 46% center;
+      }
+
+      a.slink.medium {
+        background-image: url("../../images/pictograms/medium.svg");
+        background-position: right center;
+      }
+
+      a.slink.twitter {
+        background-image: url("../../images/pictograms/twitter.svg");
+        background-position: right center;
+      }
+    }
+  }
+}
+
+
+nav#sidebar {
+  height: 100vh;
+  top: 0px;
+  position: fixed;
+  //overflow-y: scroll;
+  //background-color: white;
+  z-index: 99;
+}
+
+#sidebar.active {
+  margin-left: -250px;
+}
+
+
+.inner-navigation {
+  font-family: "NeutraText-Book";
+  margin-top: 52px;
+  height: 100px;
+
+  #connectWallet {
+    min-width: 250px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    margin-right: 30px;
+    margin-top: 35px;
+    font-size: 20px;
+  }
+}
+
+#sidebarCollapse {
+  position: fixed;
+  top: 3px;
+  right: 20px;
+  z-index: 999;
+}
+
+.btn-mobile-menu {
+  padding: 0px;
+  color: #fff;
+  font-size: 30px;
+  transition: all 0.3s ease;
+
+
+  &:hover {
+    color: #fff;
+    opacity: 0.7;
+  }
+}
+
+.block-total {
+  height: 78px;
+  line-height: 78px;
+
+  .label {
+    font-family: "NeutraText-Book";
+  }
+
+  .total {
+    font-family: "NeutraDisp-Bold";
+  }
+}
+
+.calculator-container {
+  margin-bottom: 20px;
+  position: relative;
+  max-width: 210px;
+
+  .label {
+    font-family: "NeutraText-Book";
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .input-group {
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0px;
+    padding: 2px 5px;
+    background-color: #dff1f3;
+    font-size: 16px;
+    line-height: 16px;
+    font-family: "NeutraDisp-Bold";
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    color: #231F20;
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: 5px;
+
+    .input {
+      color: #231F20;
+    }
+
+    .text {
+      font-size: 13px;
+      color: #231F20;
+    }
+  }
+}
+
+
+
+.logo-ow
+{
+  //background-color: aqua!important;
+  //width: 125px;
+  height:70px;
+  margin-bottom: 44px;
+  margin-top: 45px;
+
+}
+
+.logo-walt-old-inner {
+  background: transparent url('../../images/logo/fixed-wault-logo-old-black2.png') left bottom no-repeat;
+  //width: 125px;
+  //height: 50px;
+  background-size: 153px;
+  //background-size: contain;
+}
+
+.logo-walt-inner {
+  background: transparent url('../../images/logo/wault-logo.svg') left bottom no-repeat;
+  background-size: 142px;
+}
+
+
+.logo-wex-inner {
+  background: transparent url('../../images/logo/wswap.svg') left bottom no-repeat;
+  background-size: 173px;
+}
+
+
+body.dark-theme {
+  #sidebar {
+    color: #1e7b77;
+    background-color: #142429;
+
+    ul {
+      li {
+        a {
+          color: #dff1f3;
+        }
+      }
+    }
+
+    .sidebar-header {
+      .main-logo {
+        background-image: url("../../images/logo/fixed-wault-logo-white2.png");
+      }
+    }
+  }
+
+  .logo-walt-inner {
+    background-image: url("../../images/logo/fixed-wault-logo-white2.png");
+  }
+
+  .logo-walt-old-inner {
+    background-image: url("../../images/logo/fixed-wault-logo-old-white2.png");
+  }
+
+  .logo-wex-inner {
+    background-image: url("../../images/logo/fixed-wswap-logo-white2.png");
+  }
+
+  .filters {
+    .filter {
+      color: #dff1f3;
+
+      .title {
+        color: #dff1f3;
+      }
+    }
+  }
+}
+
+@media screen and (max-height: 790px) {
+  #sidebar {
+    .sidebar-footer {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      margin-top: 30px;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  #sidebar {
+    margin-left: -250px;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+}
+
+@media (max-height: 790px) {
+  #sidebar {
+    .sidebar-header {
+      .main-logo {
+        width: 140px;
+        height: 60px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .inner-navigation {
+    #connectWallet {
+      margin-right: 0px;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  nav#sidebar {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+  }
+
+  #sidebar.active ~ #page-wrapper {
+    margin-left: 250px;
+  }
+
+  #sidebar.active ~ #page-wrapper-overlay {
+    display: block;
+  }
+
+  nav#sidebar:not(.active) {
+    display: none;
+  }
+
+
+  #mainOverlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 98;
+  }
+}
+
+
+@media screen and (min-width: 992px) {
+  #page-wrapper {
+    padding-left: 250px;
+  }
+
+  #sidebarCollapse {
+    display: none;
+  }
+}

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <!-- Links -->
+<<<<<<< HEAD
+    <link rel="shortcut icon" type="image/png" href="%PUBLIC_URL%/favicon.png"/>
+    <link rel="apple-touch-icon" sizes="195x195" href="%PUBLIC_URL%/images/195x195_App_Icon.png"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json"/>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Kanit:400,500,900" rel="stylesheet"/>
+
+    <link href="./static/css/3.191f4a61.chunk.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/appv4.css">
+
+=======
+    <link rel="shortcut icon" type="image/png" href="%PUBLIC_URL%/favicon.png?v=2" />
+    <link rel="apple-touch-icon" sizes="195x195" href="%PUBLIC_URL%/images/195x195_App_Icon.png" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+>>>>>>> releaseChanges
+    <!-- Meta -->
+    <title>Wault Swap</title>
+    <meta
+            name="description"
+            content="WaultSwap - A DeFi exchange on Binance Smart Chan (BSC)"
+    />
+<<<<<<< HEAD
+    <meta name="theme-color" content="#000000"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no"/>
+    <meta name="twitter:image" content="%PUBLIC_URL%/favicon.png"/>
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="WaultSwap - A DeFi exchange on Binance Smart Chan (BSC)"/>
+</head>
+<body class="dark-theme">
+<noscript>You need to enable JavaScript to run this app.</noscript>
+
+
+<div class="wrapper">
+    <div class="page-top-line"></div>
+
+    <nav id="sidebar" class="">
+        <div class="sidebar-header">
+            <div class="main-logo"></div>
+        </div>
+        <ul class="list-unstyled" style="padding-left: 3px;">
+            <li><a href="https://app.wault.finance/#overview" class="lnk overview active"><span>Overview</span></a></li>
+            <li><a href="https://swap.wault.finance" class="lnk swap"><span>Swap</span></a></li>
+            <li><a href="https://app.wault.finance/#farm" class="lnk farm"><span>Farm</span></a></li>
+            <li><a href="https://app.wault.finance/#locked-staking" class="lnk locked-staking"><span>Locked Staking</span></a></li>
+            <li><a href="https://app.wault.finance/#vaults" class="lnk vaults"><span>Vaults</span></a></li>
+            <li><a href="https://locker.wault.finance/" target="_blank" class="lnk locked"><span>Locker</span></a></li>
+            <li><a href="https://launchpad.wault.finance/" target="_blank" class="lnk launchpad"><span>Launchpad</span></a></li>
+            <li><a href="https://docs.wault.finance" target="_blank" class="lnk docs"><span>Docs</span></a></li>
+            <li><a href="https://docs.wault.finance/resources/transparency" target="_blank" class="lnk contacts"><span>Contracts</span></a>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="calculator-container">
+                <div class="input-group">
+                    <a class="text" style="color: #2b7a78;"
+                       href="https://v1exchange.pancakeswap.finance/#/swap?outputCurrency=0x6Ff2d9e5891a7a7c554b80e0D1B791483C78BcE9"
+                       target="_blank">WAULT</a>
+                    <a class="input"
+                       href="https://v1exchange.pancakeswap.finance/#/swap?outputCurrency=0x6Ff2d9e5891a7a7c554b80e0D1B791483C78BcE9"
+                       target="_blank"
+                       id="calcWaultPrice">$<span>{{formatNumber(waultPrice.toLocaleString('en-US'))}}</span></a>
+                </div>
+                <div class="input-group">
+                    <a class="text" style="color: #2b7a78;"
+                       href="https://v1exchange.pancakeswap.finance/#/swap?outputCurrency=0x6Ff2d9e5891a7a7c554b80e0D1B791483C78BcE9"
+                       target="_blank">WAULT LP</a>
+                    <a class="input"
+                       href="https://v1exchange.pancakeswap.finance/#/swap?outputCurrency=0x6Ff2d9e5891a7a7c554b80e0D1B791483C78BcE9"
+                       target="_blank" id="calcWaultLpPrice">$<span>{{formatNumber(waultLpPrice.toLocaleString('en-US'))}}</span></a>
+                </div>
+                <div class="input-group">
+                    <span class="text" style="color: #2b7a78;">WEX</span>
+                    <div class="input" id="calcWexPrice">$<span>0.00</span></div>
+                </div>
+                <div class="input-group">
+                    <span class="text" style="color: #2b7a78;">WEX LP</span>
+                    <div class="input" id="calcWexLpPrice">$<span>0.00</span></div>
+                </div>
+
+                <div class="input-group">
+                    <a class="text" style="color: #2b7a78;"
+                       href="https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xB64E638E60D154B43f660a6BF8fD8a3b249a6a21">WAULT<span
+                            class="bigger-letter">x</span></a>
+                    <div class="input" id="calcWAULTXPrice"
+                         href="https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xB64E638E60D154B43f660a6BF8fD8a3b249a6a21">
+                        $<span>{{waultxPrice}}</span></div>
+                </div>
+
+                <div class="input-group">
+                    <a class="text" style="color: #2b7a78;"
+                       href="https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xB64E638E60D154B43f660a6BF8fD8a3b249a6a21">WAULT<span
+                            class="bigger-letter">x</span> LP</a>
+                    <div class="input" id="calcWAULTX_LPPrice"
+                         href="https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xB64E638E60D154B43f660a6BF8fD8a3b249a6a21">
+                        $<span>{{waultxLpPrice}}</span></div>
+                </div>
+            </div>
+
+<!--            <div class="action d-flex justify-content-between">-->
+<!--                <div class="switch-themes" id="themes">-->
+<!--                    <a href="#" id="lightTheme" onclick="return false;"-->
+<!--                       :class="['light',{ 'active' : $cookies.get('theme_color') == 'light' }]" data-type="light"></a>-->
+<!--                    <a href="#" id="darkTheme" onclick="return false;"-->
+<!--                       :class="['dark',{ 'active' : $cookies.get('theme_color') == 'dark' }]" data-type="dark"></a>-->
+<!--                </div>-->
+<!--                <div class="langs text-right">-->
+<!--                    <a href="#" onclick="return false;" class="active">EN</a>-->
+<!--                    <a href="#" onclick="return false;" class="">ES</a>-->
+<!--                </div>-->
+<!--            </div>-->
+
+            <div class="social">
+                <a href="https://discord.gg/cVtJ9RZXwH" target="_blank" class="slink discord"></a>
+                <a href="https://github.com/WaultFinance" target="_blank" class="slink github"></a>
+                <a href="https://t.me/WaultFinance" target="_blank" class="slink telegram"></a>
+                <a href="https://www.youtube.com/channel/UCkZzIXsEl9nDmxMeEmLNx-A" target="_blank"
+                   class="slink youtube"></a>
+                <a href="https://waultfinance.medium.com/" target="_blank" class="slink medium"></a>
+                <a href="https://twitter.com/Wault_Finance" target="_blank" class="slink twitter"></a>
+            </div>
+        </div>
+    </nav>
+
+    <a type="button" id="sidebarCollapse" class="btn-mobile-menu">
+        <span class="mdi mdi-menu"></span>
+    </a>
+
+    <div id="page-wrapper-overlay" @click="if ($('#sidebar').hasClass('active')) $('#sidebarCollapse').click();">
+    </div>
+    <div id="page-wrapper">
+        <!-- /connect-wallet -->
+        <!--        <div class="inner-navigation" v-if="selectedSection != 1">-->
+        <!--          <div class="container-fluid">-->
+        <!--            <button type="button" class="btn btn-default float-right" id="connectWallet" @click="walletButtonClick">{{ walletButton.text }}</button>-->
+        <!--          </div>-->
+        <!--        </div>-->
+
+        <div id="root"></div>
+    </div>
+</div>
+
+<script>!function (e) {
+    function r(r) {
+        for (var n, a, i = r[0], c = r[1], f = r[2], s = 0, p = []; s < i.length; s++) a = i[s], Object.prototype.hasOwnProperty.call(o, a) && o[a] && p.push(o[a][0]), o[a] = 0;
+        for (n in c) Object.prototype.hasOwnProperty.call(c, n) && (e[n] = c[n]);
+        for (l && l(r); p.length;) p.shift()();
+        return u.push.apply(u, f || []), t()
+    }
+
+    function t() {
+        for (var e, r = 0; r < u.length; r++) {
+            for (var t = u[r], n = !0, i = 1; i < t.length; i++) {
+                var c = t[i];
+                0 !== o[c] && (n = !1)
+            }
+            n && (u.splice(r--, 1), e = a(a.s = t[0]))
+        }
+        return e
+    }
+
+    var n = {}, o = {2: 0}, u = [];
+
+    function a(r) {
+        if (n[r]) return n[r].exports;
+        var t = n[r] = {i: r, l: !1, exports: {}};
+        return e[r].call(t.exports, t, t.exports, a), t.l = !0, t.exports
+    }
+
+    a.e = function (e) {
+        var r = [], t = o[e];
+        if (0 !== t) if (t) r.push(t[2]); else {
+            var n = new Promise((function (r, n) {
+                t = o[e] = [r, n]
+            }));
+            r.push(t[2] = n);
+            var u, i = document.createElement("script");
+            i.charset = "utf-8", i.timeout = 120, a.nc && i.setAttribute("nonce", a.nc), i.src = function (e) {
+                return a.p + "static/js/" + ({}[e] || e) + "." + {
+                    0: "6ba349f3",
+                    4: "5bfdb26d",
+                    5: "e268c3d2",
+                    6: "88093d3b",
+                    7: "11526ebd"
+                }[e] + ".chunk.js"
+            }(e);
+            var c = new Error;
+            u = function (r) {
+                i.onerror = i.onload = null, clearTimeout(f);
+                var t = o[e];
+                if (0 !== t) {
+                    if (t) {
+                        var n = r && ("load" === r.type ? "missing" : r.type), u = r && r.target && r.target.src;
+                        c.message = "Loading chunk " + e + " failed.\n(" + n + ": " + u + ")", c.name = "ChunkLoadError", c.type = n, c.request = u, t[1](c)
+                    }
+                    o[e] = void 0
+                }
+            };
+            var f = setTimeout((function () {
+                u({type: "timeout", target: i})
+            }), 12e4);
+            i.onerror = i.onload = u, document.head.appendChild(i)
+        }
+        return Promise.all(r)
+    }, a.m = e, a.c = n, a.d = function (e, r, t) {
+        a.o(e, r) || Object.defineProperty(e, r, {enumerable: !0, get: t})
+    }, a.r = function (e) {
+        "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {value: "Module"}), Object.defineProperty(e, "__esModule", {value: !0})
+    }, a.t = function (e, r) {
+        if (1 & r && (e = a(e)), 8 & r) return e;
+        if (4 & r && "object" == typeof e && e && e.__esModule) return e;
+        var t = Object.create(null);
+        if (a.r(t), Object.defineProperty(t, "default", {
+            enumerable: !0,
+            value: e
+        }), 2 & r && "string" != typeof e) for (var n in e) a.d(t, n, function (r) {
+            return e[r]
+        }.bind(null, n));
+        return t
+    }, a.n = function (e) {
+        var r = e && e.__esModule ? function () {
+            return e.default
+        } : function () {
+            return e
+        };
+        return a.d(r, "a", r), r
+    }, a.o = function (e, r) {
+        return Object.prototype.hasOwnProperty.call(e, r)
+    }, a.p = "./", a.oe = function (e) {
+        throw console.error(e), e
+    };
+    var i = this["webpackJsonpwswap-interface"] = this["webpackJsonpwswap-interface"] || [], c = i.push.bind(i);
+    i.push = r, i = i.slice();
+    for (var f = 0; f < i.length; f++) r(i[f]);
+    var l = c;
+    t()
+}([])</script>
+<script src="./static/js/3.48f2f828.chunk.js"></script>
+<script src="./static/js/main.641c8959.chunk.js"></script>
+<script src="static/js/vendors.js"></script>
+<script src="static/js/app.js"></script>
+
+</body>
+=======
+    <meta name="theme-color" content="#000000" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no" />
+    <meta name="twitter:image" content="%PUBLIC_URL%/favicon.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="WaultSwap - A DeFi exchange on Binance Smart Chan (BSC)" />
+  </head>
+  <body style="">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+>>>>>>> releaseChanges
+</html>

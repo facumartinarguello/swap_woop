@@ -1,0 +1,151 @@
+$DEBUG:true;
+
+@mixin grayscale_element($value) {
+    -webkit-filter: #{"grayscale(#{$value})"};
+    -moz-filter: #{"grayscale(#{$value})"};
+    filter:#{"grayscale(#{$value})"};
+}
+
+// https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html
+//
+// grayscale      ex: filter: grayscale(100%);
+// sepia          ex: filter: sepia(100%);
+// saturate       ex: filter: saturate(0%);
+// hue-rotate     ex: filter: hue-rotate(45deg);
+// invert         ex: filter: invert(100%);
+// brightness     ex: filter: brightness(15%);
+// contrast       ex: filter: contrast(200%);
+// blur           ex: filter: blur(2px);
+@mixin breakpoint($point) {
+    @if $point == large {
+        @media (min-width: 64.375em) { @content; }
+    }
+    @else if $point == medium {
+        @media (min-width: 50em) { @content; }
+    }
+    @else if $point == small {
+        @media (min-width: 37.5em) { @content; }
+    }
+}
+@mixin gradient-text($gradient, $bg) {
+    @supports(mix-blend-mode: lighten) {
+        display: inline-block;
+        position: relative;
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background: unquote($gradient);
+            pointer-events: none;
+        }
+        color: #fff;
+        background: #000;
+        mix-blend-mode: lighten;
+        &::before {
+            mix-blend-mode: multiply;
+        }
+    }
+}
+@mixin filter($filter-type,$filter-amount) {
+    -webkit-filter: $filter-type+unquote('(#{$filter-amount})');
+    -moz-filter: $filter-type+unquote('(#{$filter-amount})');
+    -ms-filter: $filter-type+unquote('(#{$filter-amount})');
+    -o-filter: $filter-type+unquote('(#{$filter-amount})');
+    filter: $filter-type+unquote('(#{$filter-amount})');
+}
+//@include transform(rotate(#{$deg}deg));
+@mixin rotate ($deg) {
+    @include transform(rotate(#{$deg}deg));
+}
+// generic transform
+@mixin transform($transforms...)
+{
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+    transform: $transforms;
+}
+
+@mixin transitionEase($propertie, $time)
+{
+    -webkit-transition: $propertie $time ease;
+    -moz-transition: $propertie $time ease;
+    -ms-transition: $propertie $time ease;
+    -o-transition: $propertie $time ease;
+    transition: $propertie $time ease;
+}
+
+@mixin transition($properties...)
+{
+    -webkit-transition: $properties;
+    -moz-transition: $properties;
+    -ms-transition: $properties;
+    -o-transition: $properties;
+    transition: $properties;
+}
+
+
+@mixin transformOrigin($properties...)
+{
+    -webkit-transform-origin: $properties;
+    -moz-transform-origin: $properties;
+    -ms-transform-origin: $properties;
+    -o-transform-origin: $properties;
+    transform-origin: $properties;
+}
+
+
+@mixin borderRadius($radius)
+{
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin opacity($value){
+    $ie-value: $value * 100;
+    opacity: $value;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$ie-value+")";
+    filter: alpha(opacity=$ie-value);
+}
+// translate
+@mixin translate ($x, $y)
+{
+    @include transform(translate($x, $y));
+}
+//  @include centerDivX()
+@mixin centerDivX()
+{
+    @include transform(translate( -50%, 0%));
+}
+//  @include centerDivY()
+@mixin centerDivY()
+{
+    @include transform(translate( 0%, -50% ));
+}
+
+ // @include centerDivXY()
+@mixin centerDivXY()
+{
+    position: absolute;
+    @include transform(translate( -50%, -50%));
+    left: 50%;
+    top:50%;
+}
+//@include transAll();
+@mixin transAll()
+{
+    @include transition(all 0.3s ease);
+}
+@mixin calc($property, $expression) {
+    #{$property}: -webkit-calc(#{$expression});
+    #{$property}: -moz-calc(#{$expression});
+    #{$property}: calc(#{$expression});
+}
+@mixin hide-text{
+    overflow:hidden;
+    text-indent:-9000px;
+    display:block;
+}
