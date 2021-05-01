@@ -1,9 +1,3 @@
-/**
- *Submitted for verification at BscScan.com on 2021-02-16
-*/
-
-// SPDX-License-Identifier: MIT
-
 pragma solidity 0.7.6;
 
 /*
@@ -631,7 +625,7 @@ library SafeERC20 {
     }
 }
 
-contract WaultLiquidityMining is Ownable {
+contract WoonklyLiquidityMining is Ownable {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
@@ -644,11 +638,11 @@ contract WaultLiquidityMining is Ownable {
     struct PoolInfo {
         IERC20 lpToken;
         uint256 lastRewardBlock;
-        uint256 accWaultPerShare;
+        uint256 accWoonklyPerShare;
     }
 
-    IERC20 public wault;
-    uint256 public waultPerBlock = uint256(32 ether).div(10); //3.2 WAULT
+    IERC20 public woonkly;
+    uint256 public woonklyPerBlock = uint256(32 ether).div(10); //3.2 WOONKLY
 
     PoolInfo public liquidityMining;
     mapping(address => UserInfo) public userInfo;
@@ -657,14 +651,14 @@ contract WaultLiquidityMining is Ownable {
     event Withdraw(address indexed user, uint256 amount);
     event Claim(address indexed user, uint256 amount);
 
-    function setWaultTokens(IERC20 _wault, IERC20 _lpToken) external onlyOwner {
-        require(address(wault) == address(0) && address(liquidityMining.lpToken) == address(0), 'Tokens already set!');
-        wault = _wault;
+    function setWoonklyTokens(IERC20 _woonkly, IERC20 _lpToken) external onlyOwner {
+        require(address(woonkly) == address(0) && address(liquidityMining.lpToken) == address(0), 'Tokens already set!');
+        woonkly = _woonkly;
         liquidityMining =
             PoolInfo({
                 lpToken: _lpToken,
                 lastRewardBlock: 0,
-                accWaultPerShare: 0
+                accWoonklyPerShare: 0
         });
     }
     
@@ -676,14 +670,14 @@ contract WaultLiquidityMining is Ownable {
     function pendingRewards(address _user) external view returns (uint256) {
         require(liquidityMining.lastRewardBlock > 0 && block.number >= liquidityMining.lastRewardBlock, 'Mining not yet started');
         UserInfo storage user = userInfo[_user];
-        uint256 accWaultPerShare = liquidityMining.accWaultPerShare;
+        uint256 accWoonklyPerShare = liquidityMining.accWoonklyPerShare;
         uint256 lpSupply = liquidityMining.lpToken.balanceOf(address(this));
         if (block.number > liquidityMining.lastRewardBlock && lpSupply != 0) {
             uint256 multiplier = block.number.sub(liquidityMining.lastRewardBlock);
-            uint256 waultReward = multiplier.mul(waultPerBlock);
-            accWaultPerShare = liquidityMining.accWaultPerShare.add(waultReward.mul(1e12).div(lpSupply));
+            uint256 woonklyReward = multiplier.mul(woonklyPerBlock);
+            accWoonklyPerShare = liquidityMining.accWoonklyPerShare.add(woonklyReward.mul(1e12).div(lpSupply));
         }
-        return user.amount.mul(accWaultPerShare).div(1e12).sub(user.rewardDebt).add(user.pendingRewards);
+        return user.amount.mul(accWoonklyPerShare).div(1e12).sub(user.rewardDebt).add(user.pendingRewards);
     }
 
     function updatePool() internal {
@@ -697,8 +691,8 @@ contract WaultLiquidityMining is Ownable {
             return;
         }
         uint256 multiplier = block.number.sub(liquidityMining.lastRewardBlock);
-        uint256 waultReward = multiplier.mul(waultPerBlock);
-        liquidityMining.accWaultPerShare = liquidityMining.accWaultPerShare.add(waultReward.mul(1e12).div(lpSupply));
+        uint256 woonklyReward = multiplier.mul(woonklyPerBlock);
+        liquidityMining.accWoonklyPerShare = liquidityMining.accWoonklyPerShare.add(woonklyReward.mul(1e12).div(lpSupply));
         liquidityMining.lastRewardBlock = block.number;
     }
 
@@ -706,7 +700,7 @@ contract WaultLiquidityMining is Ownable {
         UserInfo storage user = userInfo[msg.sender];
         updatePool();
         if (user.amount > 0) {
-            uint256 pending = user.amount.mul(liquidityMining.accWaultPerShare).div(1e12).sub(user.rewardDebt);
+            uint256 pending = user.amount.mul(liquidityMining.accWoonklyPerShare).div(1e12).sub(user.rewardDebt);
             if (pending > 0) {
                 user.pendingRewards = user.pendingRewards.add(pending);
             }
@@ -715,7 +709,7 @@ contract WaultLiquidityMining is Ownable {
             liquidityMining.lpToken.safeTransferFrom(address(msg.sender), address(this), amount);
             user.amount = user.amount.add(amount);
         }
-        user.rewardDebt = user.amount.mul(liquidityMining.accWaultPerShare).div(1e12);
+        user.rewardDebt = user.amount.mul(liquidityMining.accWoonklyPerShare).div(1e12);
         emit Deposit(msg.sender, amount);
     }
 
@@ -723,7 +717,7 @@ contract WaultLiquidityMining is Ownable {
         UserInfo storage user = userInfo[msg.sender];
         require(user.amount >= amount, "Withdrawing more than you have!");
         updatePool();
-        uint256 pending = user.amount.mul(liquidityMining.accWaultPerShare).div(1e12).sub(user.rewardDebt);
+        uint256 pending = user.amount.mul(liquidityMining.accWoonklyPerShare).div(1e12).sub(user.rewardDebt);
         if (pending > 0) {
             user.pendingRewards = user.pendingRewards.add(pending);
         }
@@ -731,36 +725,36 @@ contract WaultLiquidityMining is Ownable {
             user.amount = user.amount.sub(amount);
             liquidityMining.lpToken.safeTransfer(address(msg.sender), amount);
         }
-        user.rewardDebt = user.amount.mul(liquidityMining.accWaultPerShare).div(1e12);
+        user.rewardDebt = user.amount.mul(liquidityMining.accWoonklyPerShare).div(1e12);
         emit Withdraw(msg.sender, amount);
     }
 
     function claim() external {
         UserInfo storage user = userInfo[msg.sender];
         updatePool();
-        uint256 pending = user.amount.mul(liquidityMining.accWaultPerShare).div(1e12).sub(user.rewardDebt);
+        uint256 pending = user.amount.mul(liquidityMining.accWoonklyPerShare).div(1e12).sub(user.rewardDebt);
         if (pending > 0 || user.pendingRewards > 0) {
             user.pendingRewards = user.pendingRewards.add(pending);
-            uint256 claimedAmount = safeWaultTransfer(msg.sender, user.pendingRewards);
+            uint256 claimedAmount = safeWoonklyTransfer(msg.sender, user.pendingRewards);
             emit Claim(msg.sender, claimedAmount);
             user.pendingRewards = user.pendingRewards.sub(claimedAmount);
         }
-        user.rewardDebt = user.amount.mul(liquidityMining.accWaultPerShare).div(1e12);
+        user.rewardDebt = user.amount.mul(liquidityMining.accWoonklyPerShare).div(1e12);
     }
 
-    function safeWaultTransfer(address to, uint256 amount) internal returns (uint256) {
-        uint256 waultBalance = wault.balanceOf(address(this));
-        if (amount > waultBalance) {
-            wault.transfer(to, waultBalance);
-            return waultBalance;
+    function safeWoonklyTransfer(address to, uint256 amount) internal returns (uint256) {
+        uint256 woonklyBalance = woonkly.balanceOf(address(this));
+        if (amount > woonklyBalance) {
+            woonkly.transfer(to, woonklyBalance);
+            return woonklyBalance;
         } else {
-            wault.transfer(to, amount);
+            woonkly.transfer(to, amount);
             return amount;
         }
     }
     
-    function setWaultPerBlock(uint256 _waultPerBlock) external onlyOwner {
-        require(_waultPerBlock > 0, "WAULT per block should be greater than 0!");
-        waultPerBlock = _waultPerBlock;
+    function setWoonklyPerBlock(uint256 _woonklyPerBlock) external onlyOwner {
+        require(_woonklyPerBlock > 0, "WOONKLY per block should be greater than 0!");
+        woonklyPerBlock = _woonklyPerBlock;
     }
 }
